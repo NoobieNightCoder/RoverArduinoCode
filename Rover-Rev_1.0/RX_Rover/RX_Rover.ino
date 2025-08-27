@@ -1,3 +1,6 @@
+// Переменная с номером канала связи (номер канала - последние 2 символа)
+#define Chastota 0x70
+
 #include <Servo.h>
 #include <SPI.h>
 #include "nRF24L01.h"
@@ -43,7 +46,7 @@ void setup() {
   radio.setPayloadSize(32);   // размер пакета, в байтах
 
   radio.openReadingPipe(1, address[0]);   // хотим слушать трубу 0
-  radio.setChannel(0x70);     // выбираем канал (в котором нет шумов!)
+  radio.setChannel(Chastota);     // выбираем канал (в котором нет шумов!)
 
   radio.setPALevel (RF24_PA_MAX);   // уровень мощности передатчика. На выбор RF24_PA_MIN, RF24_PA_LOW, RF24_PA_HIGH, RF24_PA_MAX
   radio.setDataRate (RF24_250KBPS); // скорость обмена. На выбор RF24_2MBPS, RF24_1MBPS, RF24_250KBPS

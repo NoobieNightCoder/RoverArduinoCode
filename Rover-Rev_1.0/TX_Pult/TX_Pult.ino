@@ -1,3 +1,6 @@
+// Переменная с номером канала связи (номер канала - последние 2 символа)
+#define Chastota 0x70
+
 #include <SPI.h>          // библиотека для работы с шиной SPI
 #include "nRF24L01.h"     // библиотека радиомодуля
 #include "RF24.h"         // ещё библиотека радиомодуля
@@ -32,8 +35,8 @@ void setup() {
   radio.enableAckPayload();   // разрешить отсылку данных в ответ на входящий сигнал
   radio.setPayloadSize(32);   // размер пакета, в байтах
 
-  radio.openWritingPipe(address[0]);  // мы - труба 0, открываем канал для передачи данных
-  radio.setChannel(0x70);             // выбираем канал (в котором нет шумов!)
+  radio.openWritingPipe(address[0]);      // мы - труба 0, открываем канал для передачи данных
+  radio.setChannel(Chastota);             // выбираем канал (в котором нет шумов!)
 
   radio.setPALevel (RF24_PA_MAX);   // уровень мощности передатчика. На выбор RF24_PA_MIN, RF24_PA_LOW, RF24_PA_HIGH, RF24_PA_MAX
   radio.setDataRate (RF24_250KBPS); // скорость обмена. На выбор RF24_2MBPS, RF24_1MBPS, RF24_250KBPS
